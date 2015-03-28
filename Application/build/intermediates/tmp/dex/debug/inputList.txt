@@ -1,0 +1,7 @@
+C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\classes\debug
+C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-3094e9db37f4e765c9a527496a6e3750ac08deb7.jar
+C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-07490a8440ad731b90b2e44882c5bc07a974b279.jar
+C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\classes-a1ad35595381ed42096529995d800995486bb17f.jar
+C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\classes-ccdbb319456e12b918b10424fa20597b99c61e8e.jar
+C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-9130ce421bdef34a5f198f6075ae142946150334.jar
+C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\classes-ecb4636c04c2700382b891c3de700a281aa0ba3a.jar
