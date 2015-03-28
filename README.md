@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Android MediaRecorder Sample
 ===================================
 
@@ -70,3 +71,12 @@ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
 WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
 License for the specific language governing permissions and limitations under
 the License.
+=======
+# MediaRecorder
+
+This project implements the 1st work package of the "Image Deblurring using 3D Camera Rotation" project in the 3D Photography
+course (Spring Semester 2015) of the MSc in Computer Science at ETH Zurich.
+
+The goal is to retrieve synchronized video and sensory data from an Android smartphone, to use it for deblurring the original
+video by dealing with the 3D rotation of the camera.
+>>>>>>> origin/master
