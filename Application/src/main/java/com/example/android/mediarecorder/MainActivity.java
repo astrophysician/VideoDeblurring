@@ -29,13 +29,16 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.android.common.media.CameraHelper;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,14 +55,16 @@ public class MainActivity extends Activity implements SensorEventListener{
     private MediaRecorder mMediaRecorder;
     private SensorManager mSensorManager;
     private Sensor mRotationVectorSensor;
-    private ArrayList<Float> mRotationVectors = new ArrayList<Float>();
-    private ArrayList<Long> mEventTimestamps = new ArrayList<Long>();
+    private ArrayList<float[]> mQuaternions = new ArrayList();
+    private ArrayList<Long> mEventTimestamps = new ArrayList();
+    private ArrayList<Long> mSystemTimestamps = new ArrayList();
 
 
     private boolean isRecording = false;
     private boolean hasRotationVectorSensor = false;
     private static final String TAG = "Recorder";
     private Button captureButton;
+    private String videoFile =  null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +112,20 @@ public class MainActivity extends Activity implements SensorEventListener{
                 mSensorManager.unregisterListener(this);
             }
 
+            // Write the sensor data and timestamps to file
+            StringBuilder lineToWrite = new StringBuilder();
+            for (int i = 0; i<mSystemTimestamps.size();i++) {
+                lineToWrite.append(String.valueOf(mSystemTimestamps.get(i)));
+                lineToWrite.append(", " + String.valueOf(mEventTimestamps.get(i)));
+                lineToWrite.append(", " + mQuaternions.get(i));
+                lineToWrite.append(System.lineSeparator());
+            }
+            writeToSensorFile(videoFile.substring(0, videoFile.length()-4)+ ".txt",
+                    lineToWrite.toString());
         } else {
+
+            // Get file name for storing data first
+            videoFile = CameraHelper.getOutputMediaFile(CameraHelper.MEDIA_TYPE_VIDEO).toString();
 
             /* Use minimum possible delay for sensor events -> obtain more rotation vector samples per frame
             We can also use the getMinDelay() method of the Sensor class as the 3rd argument for this purpose -
@@ -115,16 +133,13 @@ public class MainActivity extends Activity implements SensorEventListener{
             return a positive integer for the microseconds of the minimum delay) or if it creates SensorEvent
             only when its data changes.
              */
-
             // Register the sensor listener **before** the recording starts
             if (hasRotationVectorSensor) {
                 mSensorManager.registerListener(this, mRotationVectorSensor, SensorManager.SENSOR_DELAY_FASTEST);
             }
 
             // BEGIN_INCLUDE(prepare_start_media_recorder)
-
             new MediaPrepareTask().execute(null, null, null);
-
             // END_INCLUDE(prepare_start_media_recorder)
 
         }
@@ -198,6 +213,10 @@ public class MainActivity extends Activity implements SensorEventListener{
 
         // likewise for the camera object itself.
         parameters.setPreviewSize(profile.videoFrameWidth, profile.videoFrameHeight);
+        parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_FIXED);
+        parameters.setVideoStabilization(false);
+        parameters.setRecordingHint(true);
+        parameters.setPreviewFrameRate(15);
         mCamera.setParameters(parameters);
         try {
                 // Requires API level 11+, For backward compatibility use {@link setPreviewDisplay}
@@ -220,13 +239,14 @@ public class MainActivity extends Activity implements SensorEventListener{
         // Step 2: Set sources
         mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT );
         mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+        mMediaRecorder.setVideoFrameRate(15);
+        mMediaRecorder.setCaptureRate(15);
 
         // Step 3: Set a CamcorderProfile (requires API Level 8 or higher)
         mMediaRecorder.setProfile(profile);
 
         // Step 4: Set output file
-        mMediaRecorder.setOutputFile(CameraHelper.getOutputMediaFile(
-                CameraHelper.MEDIA_TYPE_VIDEO).toString());
+        mMediaRecorder.setOutputFile(videoFile);
         // END_INCLUDE (configure_media_recorder)
 
         // Step 5: Prepare configured MediaRecorder
@@ -252,11 +272,12 @@ public class MainActivity extends Activity implements SensorEventListener{
 
             // Add new measurements to measurement lists
             mEventTimestamps.add(event.timestamp);
-            float[] rv = event.values;
-            for (int i=0; i<rv.length; i++) {
-                mRotationVectors.add(rv[i]);
-            }
-
+            mSystemTimestamps.add(System.currentTimeMillis());
+            float[] mQuaternion = new float[9];
+            SensorManager.getQuaternionFromVector(mQuaternion , event.values);
+            // Store the returned rotation vectors as quaternions. There is also a function
+            // to get rotationMatrix but not sure what kind of rotation matrix is returned.
+            mQuaternions.add(mQuaternion);
             // Could also retrieve current accuracy level of the sensor with event.accuracy
 
         }
@@ -267,6 +288,26 @@ public class MainActivity extends Activity implements SensorEventListener{
 
     }
 
+    /**
+     * Write line to filename and append with a newline
+     * @param filename
+     * @param line
+     */
+    private void writeToSensorFile(String filename, String line) {
+        try {
+            File file = new File(filename);
+            if(!file.exists()){
+                file.createNewFile();
+            }
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+            writer.write(line);
+            writer.newLine();
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            Log.e(TAG, "File for sensor not created" + e.getMessage());
+        }
+    }
     /**
      * Asynchronous task for preparing the {@link android.media.MediaRecorder} since it's a long blocking
      * operation.
@@ -279,6 +320,9 @@ public class MainActivity extends Activity implements SensorEventListener{
             if (prepareVideoRecorder()) {
                 // Camera is available and unlocked, MediaRecorder is prepared,
                 // now you can start recording
+                long startTime = System.currentTimeMillis();
+                writeToSensorFile(videoFile.substring(0, videoFile.length()-4)+ ".txt",
+                        String.valueOf(startTime));
                 mMediaRecorder.start();
 
                 isRecording = true;
