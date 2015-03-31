@@ -37,7 +37,6 @@ import com.example.android.common.media.CameraHelper;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -55,7 +54,7 @@ public class MainActivity extends Activity implements SensorEventListener{
     private MediaRecorder mMediaRecorder;
     private SensorManager mSensorManager;
     private Sensor mRotationVectorSensor;
-    private ArrayList<float[]> mQuaternions = new ArrayList();
+    private ArrayList<float[]> mRotationMatrices = new ArrayList();
     private ArrayList<Long> mEventTimestamps = new ArrayList();
     private ArrayList<Long> mSystemTimestamps = new ArrayList();
 
@@ -98,6 +97,8 @@ public class MainActivity extends Activity implements SensorEventListener{
 
             // stop recording and release camera
             mMediaRecorder.stop();  // stop the recording
+            // Move it to start if on debugging, it is not giving the correct value.
+            float mFocalLength = mCamera.getParameters().getFocalLength();
             releaseMediaRecorder(); // release the MediaRecorder object
             mCamera.lock();         // take camera access back from MediaRecorder
 
@@ -113,15 +114,18 @@ public class MainActivity extends Activity implements SensorEventListener{
             }
 
             // Write the sensor data and timestamps to file
-            StringBuilder lineToWrite = new StringBuilder();
+            StringBuilder lineToWrite = new StringBuilder(mFocalLength + "\n");
             for (int i = 0; i<mSystemTimestamps.size();i++) {
                 lineToWrite.append(String.valueOf(mSystemTimestamps.get(i)));
                 lineToWrite.append(", " + String.valueOf(mEventTimestamps.get(i)));
-                lineToWrite.append(", " + mQuaternions.get(i));
-                lineToWrite.append(System.lineSeparator());
+                lineToWrite.append(", " + mRotationMatrices.get(i));
+                lineToWrite.append("\n");
             }
             writeToSensorFile(videoFile.substring(0, videoFile.length()-4)+ ".txt",
                     lineToWrite.toString());
+            mSystemTimestamps.clear();
+            mEventTimestamps.clear();
+            mRotationMatrices.clear();
         } else {
 
             // Get file name for storing data first
@@ -273,11 +277,11 @@ public class MainActivity extends Activity implements SensorEventListener{
             // Add new measurements to measurement lists
             mEventTimestamps.add(event.timestamp);
             mSystemTimestamps.add(System.currentTimeMillis());
-            float[] mQuaternion = new float[9];
-            SensorManager.getQuaternionFromVector(mQuaternion , event.values);
-            // Store the returned rotation vectors as quaternions. There is also a function
+            float[] mRotationMatrix = new float[9];
+            SensorManager.getRotationMatrixFromVector(mRotationMatrix, event.values);
+            // Store the returned rotation vectors as rotation matrix. There is also a function
             // to get rotationMatrix but not sure what kind of rotation matrix is returned.
-            mQuaternions.add(mQuaternion);
+            mRotationMatrices.add(mRotationMatrix);
             // Could also retrieve current accuracy level of the sensor with event.accuracy
 
         }
@@ -320,10 +324,10 @@ public class MainActivity extends Activity implements SensorEventListener{
             if (prepareVideoRecorder()) {
                 // Camera is available and unlocked, MediaRecorder is prepared,
                 // now you can start recording
+                mMediaRecorder.start();
                 long startTime = System.currentTimeMillis();
                 writeToSensorFile(videoFile.substring(0, videoFile.length()-4)+ ".txt",
                         String.valueOf(startTime));
-                mMediaRecorder.start();
 
                 isRecording = true;
             } else {
