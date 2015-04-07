@@ -40,6 +40,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -118,7 +119,7 @@ public class MainActivity extends Activity implements SensorEventListener{
             for (int i = 0; i<mSystemTimestamps.size();i++) {
                 lineToWrite.append(String.valueOf(mSystemTimestamps.get(i)));
                 lineToWrite.append(", " + String.valueOf(mEventTimestamps.get(i)));
-                lineToWrite.append(", " + mRotationMatrices.get(i));
+                lineToWrite.append(", " + Arrays.toString(mRotationMatrices.get(i)));
                 lineToWrite.append("\n");
             }
             writeToSensorFile(videoFile.substring(0, videoFile.length()-4)+ ".txt",
@@ -139,7 +140,7 @@ public class MainActivity extends Activity implements SensorEventListener{
              */
             // Register the sensor listener **before** the recording starts
             if (hasRotationVectorSensor) {
-                mSensorManager.registerListener(this, mRotationVectorSensor, SensorManager.SENSOR_DELAY_FASTEST);
+                mSensorManager.registerListener(this, mRotationVectorSensor, SensorManager.SENSOR_DELAY_NORMAL);
             }
 
             // BEGIN_INCLUDE(prepare_start_media_recorder)
@@ -211,9 +212,10 @@ public class MainActivity extends Activity implements SensorEventListener{
                 mPreview.getWidth(), mPreview.getHeight());
 
         // Use the same size for recording profile.
-        CamcorderProfile profile = CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH);
+        CamcorderProfile profile = CamcorderProfile.get(CamcorderProfile.QUALITY_LOW);
         profile.videoFrameWidth = optimalSize.width;
         profile.videoFrameHeight = optimalSize.height;
+        profile.videoFrameRate = 15;
 
         // likewise for the camera object itself.
         parameters.setPreviewSize(profile.videoFrameWidth, profile.videoFrameHeight);
@@ -243,7 +245,8 @@ public class MainActivity extends Activity implements SensorEventListener{
         // Step 2: Set sources
         mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT );
         mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-        mMediaRecorder.setVideoFrameRate(15);
+//        mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
+//        mMediaRecorder.setVideoFrameRate(15);
         mMediaRecorder.setCaptureRate(15);
 
         // Step 3: Set a CamcorderProfile (requires API Level 8 or higher)
@@ -345,7 +348,6 @@ public class MainActivity extends Activity implements SensorEventListener{
             }
             // inform the user that recording has started
             setCaptureButtonText("Stop");
-
         }
     }
 
