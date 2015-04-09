@@ -140,7 +140,7 @@ public class MainActivity extends Activity implements SensorEventListener{
              */
             // Register the sensor listener **before** the recording starts
             if (hasRotationVectorSensor) {
-                mSensorManager.registerListener(this, mRotationVectorSensor, SensorManager.SENSOR_DELAY_NORMAL);
+                mSensorManager.registerListener(this, mRotationVectorSensor, SensorManager.SENSOR_DELAY_FASTEST);
             }
 
             // BEGIN_INCLUDE(prepare_start_media_recorder)
