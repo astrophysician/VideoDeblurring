@@ -18,6 +18,7 @@ package com.example.android.mediarecorder;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.hardware.Camera;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -31,6 +32,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.TextureView;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.example.android.common.media.CameraHelper;
@@ -81,6 +83,8 @@ public class MainActivity extends Activity implements SensorEventListener{
         }
         else System.out.println("No RotationVector Sensor available!");
 
+        int rotation = ((WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getRotation();
+        System.out.println(rotation);
         mPreview = (TextureView) findViewById(R.id.surface_view);
         captureButton = (Button) findViewById(R.id.button_capture);
     }
@@ -212,7 +216,7 @@ public class MainActivity extends Activity implements SensorEventListener{
                 mPreview.getWidth(), mPreview.getHeight());
 
         // Use the same size for recording profile.
-        CamcorderProfile profile = CamcorderProfile.get(CamcorderProfile.QUALITY_LOW);
+        CamcorderProfile profile = CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH);
         profile.videoFrameWidth = optimalSize.width;
         profile.videoFrameHeight = optimalSize.height;
         profile.videoFrameRate = 15;

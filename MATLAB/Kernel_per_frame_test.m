@@ -1,19 +1,21 @@
 %% Estimate blur kernel for a single frame of a video
 
-close all;
+% close all;
 clear all;
 
 %% Load registered sensor data and video
 
-file_name = 'VID_20150409_162941';
+file_name = 'VID_20150503_200430';
 load(strcat('data/', file_name, '_registered.mat'));
 
 vid = VideoReader(strcat('data/', file_name, '.mp4'));
 
 %% Select sample blurry frame and depict the kernel estimation
 
-frame_number = 78;
-blurry_frame = read(vid, frame_number);
+frame_number = 50;
+blurry_frame = im2double(read(vid, frame_number));
+% h = vision.GammaCorrector('Correction','De-gamma');
+% blurry_frame = step(h, blurry_frame);
 
 % Compute the rotation sequence for the examined frame
 Rs = reshape_and_align_rotation_matrices(samples_per_frame{frame_number}.rot_mats);
@@ -26,6 +28,7 @@ focal_length = F/pixel_size;
 
 width = get(vid, 'Width');
 height = get(vid, 'Height');
+K = calibration_matrix(focal_length, width, height);
 
 % Compute the cell size of the theta grid based on Whyte's approach
 pixels_per_theta_cell = 1;
@@ -49,3 +52,17 @@ title('Non-zero elements of estimated kernel', 'FontSize', 14);
 % Plot the corresponding blurry frame
 figure;
 imshow(blurry_frame);
+
+%% 
+[quant_thetas, weights] = get_quantized_rotation_vectors(w, non_zeros, grid_origin, theta_cell);
+% blurry_frame_rotated = cat(3, flipud(blurry_frame(:,:,1)), flipud(blurry_frame(:,:,2)), flipud(blurry_frame(:,:,3)));
+% figure;
+% imshow(blurry_frame_rotated);
+tic;
+i_rl = deconvlucy_rotational(blurry_frame, [height, width], weights, quant_thetas, K, K, 255, 1);
+toc;
+% sharp_frame = cat(3, flipud(i_rl(:,:,1)), flipud(i_rl(:,:,2)), flipud(i_rl(:,:,3)));
+figure;
+imshow(i_rl);
+% figure;
+% imshow(sharp_frame);

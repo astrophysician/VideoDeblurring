@@ -5,13 +5,13 @@ clear all;
 
 %% Read sensor data
 
-file_sensor_data = 'data/VID_20150409_162957.txt';
+file_sensor_data = 'data/VID_20150503_200430.txt';
 [F, time_sys_videostart, time_sys_sensor, time_ev_sensor, rot_mats] =...
     get_sensor_data(file_sensor_data);
 
 %% Read video from file and get basic properties
 
-file_video = 'data/VID_20150409_162957.mp4';
+file_video = 'data/VID_20150503_200430.mp4';
 vid = VideoReader(file_video);
 
 % Duration in ms
