@@ -1,19 +1,21 @@
 %% Estimate blur kernel for a single frame of a video
-
+for i = 84:-1:68
 % close all;
-clear all;
+clearvars -except i;
 
 %% Load registered sensor data and video
 
 file_name = 'VID_20150503_200430';
-load(strcat('data/', file_name, '_registered.mat'));
+
+tic;
+load(strcat('data/', file_name, strcat('_registered',num2str(i)), '.mat'));
 
 vid = VideoReader(strcat('data/', file_name, '.mp4'));
 
 %% Select sample blurry frame and depict the kernel estimation
 
-frame_number = 50;
-blurry_frame = im2double(read(vid, frame_number));
+frame_number = 53;
+blurry_frame = rgb2gray(im2double(read(vid, frame_number)));
 % h = vision.GammaCorrector('Correction','De-gamma');
 % blurry_frame = step(h, blurry_frame);
 
@@ -39,30 +41,33 @@ theta_cell = get_theta_cell(focal_length, width, height, pixels_per_theta_cell);
 [w, non_zeros, grid_origin] = construct_kernel(thetas, theta_cell);
 
 % Plot the resulting kernel
-figure;
-plot3(non_zeros(1, :), non_zeros(2, :), non_zeros(3, :), 'ob',...
-    'MarkerFaceColor', 'b', 'MarkerSize', 5, 'MarkerEdgeColor', 'k');
-axis tight
-grid on
-xlabel('\theta_x');
-ylabel('\theta_y');
-zlabel('\theta_z');
-title('Non-zero elements of estimated kernel', 'FontSize', 14);
+% figure;
+% plot3(non_zeros(1, :), non_zeros(2, :), non_zeros(3, :), 'ob',...
+%     'MarkerFaceColor', 'b', 'MarkerSize', 5, 'MarkerEdgeColor', 'k');
+% axis tight
+% grid on
+% xlabel('\theta_x');
+% ylabel('\theta_y');
+% zlabel('\theta_z');
+% title('Non-zero elements of estimated kernel', 'FontSize', 14);
 
 % Plot the corresponding blurry frame
-figure;
-imshow(blurry_frame);
+% figure;
+% imshow(blurry_frame);
 
 %% 
 [quant_thetas, weights] = get_quantized_rotation_vectors(w, non_zeros, grid_origin, theta_cell);
 % blurry_frame_rotated = cat(3, flipud(blurry_frame(:,:,1)), flipud(blurry_frame(:,:,2)), flipud(blurry_frame(:,:,3)));
 % figure;
 % imshow(blurry_frame_rotated);
-tic;
+% tic;
 i_rl = deconvlucy_rotational(blurry_frame, [height, width], weights, quant_thetas, K, K, 255, 1);
-toc;
+% toc;
 % sharp_frame = cat(3, flipud(i_rl(:,:,1)), flipud(i_rl(:,:,2)), flipud(i_rl(:,:,3)));
-figure;
-imshow(i_rl);
+% figure;
+% imshow(i_rl);
 % figure;
 % imshow(sharp_frame);
+imwrite(i_rl, strcat('results/',file_name,'/result',num2str(frame_number),'Image',num2str(i),'gray1.png'));
+toc;
+end

@@ -19,7 +19,9 @@ line = fgets(fid);
 
 empty_line = sprintf('\n');
 
+i = 0;
 while (ischar(line))
+    i = i+1;
     % Break at first empty line (there are two at the end of the file)
     if (strcmp(line, empty_line))
         break;

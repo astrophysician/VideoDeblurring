@@ -32,8 +32,12 @@ num_frames = get(vid, 'NumberOfFrames');
 % for time of sensor samples
 time_sensor_video = time_sys_sensor - time_sys_videostart;
 
+% loop to identify the offset between samples.
+for i = 90:-1:60
 % Get cell array with single-frame sequences of sensor samples per cell
-samples_per_frame = video_sensor_registration(time_sensor_video, rot_mats, duration, num_frames);
+samples_per_frame = video_sensor_registration(time_sensor_video, rot_mats, duration, num_frames, i);
 
 % Save frame-separated sensor data
-save(strcat(file_video(1:end-4), '_registered', '.mat'), 'samples_per_frame', 'F');
+save(strcat(file_video(1:end-4), strcat('_registered',num2str(i)), '.mat'), 'samples_per_frame', 'F');
+
+end

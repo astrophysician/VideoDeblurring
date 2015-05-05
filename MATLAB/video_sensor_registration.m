@@ -1,4 +1,4 @@
-function samples_per_frame = video_sensor_registration(time_sensor, rot_mats, duration, num_frames)
+function samples_per_frame = video_sensor_registration(time_sensor, rot_mats, duration, num_frames, diff)
 
 % Inputs:
 % - time_sensor:    1xn vector with timestamps of sensor samples in video
@@ -6,6 +6,7 @@ function samples_per_frame = video_sensor_registration(time_sensor, rot_mats, du
 % - rot_mats:       nxm matrix with one rotation matrix sample in each row
 % - duration:       total video duration in ms
 % - num_frames:     total number of video frames
+% - diff:           number of samples to take before the system time samples
 
 
 % Output:
@@ -22,7 +23,8 @@ period = duration/num_frames;
 % Main loop filling the samples-per-frame output structure
 for i=1:num_frames
     % Isolate sensor samples corresponding to current frame
-    frame_samples = (time_sensor >= period*(i-1) & time_sensor < period*i);
+    frame_samples = find(time_sensor >= period*(i-1) & time_sensor < period*i);
+    frame_samples = frame_samples - diff;
     frame_data.timestamps = time_sensor(frame_samples);
     frame_data.rot_mats = rot_mats(frame_samples, :);
     

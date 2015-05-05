@@ -15,7 +15,7 @@ thetas_x = zeros(size(Rs));
 
 % Loop over all rotation matrices and compute theta_x as matrix logarithm
 for i=1:n
-    thetas_x(:, :, i) = logm(Rs(:, :, i));
+    thetas_x(:, :, i) = real(logm(Rs(:, :, i)));
 end
 
 % Construct thetas by selecting the appropriate elements of thetas_x
