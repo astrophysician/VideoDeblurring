@@ -25,7 +25,7 @@ I_blurry = zeros(height_blurry, width_blurry, 3);
 
 % ATTENTION: need to determine Nexus' coordinate system on the frame to
 % find correspondence between x/y axes and frame's rows and columns
-[Y, X] = meshgrid(1:width_blurry, 1:height_blurry);
+[X, Y] = meshgrid(1:width_blurry, 1:height_blurry);
 
 pixel_coords = shiftdim(cat(3, X, Y), 2);
 pixel_coords = reshape(pixel_coords, 2, []);
