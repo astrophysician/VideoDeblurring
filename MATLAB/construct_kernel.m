@@ -32,7 +32,7 @@ num_cells = floor(intervals) + 1;
 grid_origin = thetas_min - ((num_cells-intervals)/2).*theta_cell;
 
 % Initialize the kernel with zeros
-w = zeros(num_cells');
+w = zeros(num_cells(1),num_cells(2),num_cells(3)+1);
 
 n = size(thetas, 2);
 weight = 1/n;
@@ -51,6 +51,6 @@ end
 % Determine grid locations of non-zero kernel elements
 [I, J, K] = ind2sub(size(w), find(w));
 non_zeros = [I'; J'; K'];
-
+w(:,:,size(w,3)) = [];
 end
 

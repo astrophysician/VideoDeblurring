@@ -12,7 +12,9 @@ function Rs = reshape_and_align_rotation_matrices(rot_mats)
 n = size(rot_mats, 1);
 % Reshape rotation matrices to a set of 3x3 pages
 Rs = permute(reshape(rot_mats', 3, 3, n), [2 1 3]);
-
+for i=1:n
+    Rs(:,:,i) = Rs(:,:,i)';
+end
 R_1_t = Rs(:, :, 1)';
 
 for i=1:n

@@ -1,20 +1,21 @@
 %% Visualize blurring process for a single frame
 
+for i = 80:-1:70
 close all;
-clear all;
+clearvars -except i;
 
 %% Load registered sensor data and video
+tic;
+file_name = 'VID_20150510_204827';
 
-file_name = 'VID_20150503_200430';
-
-%load(strcat('data/', file_name, strcat('_registered',num2str(i)), '.mat'));
-load(strcat('data/', file_name, '_registered.mat'));
+load(strcat('data/', file_name, strcat('_registeredExposureTime25',num2str(i)), '.mat'));
+% load(strcat('data/', file_name, '_registered.mat'));
 
 vid = VideoReader(strcat('data/', file_name, '.mp4'));
 
 %% Select sample blurry frame, perform the kernel estimation 
 
-frame_number = 53;
+frame_number = 140;
 I_blurry = im2double(read(vid, frame_number));
 
 % Compute the rotation sequence for the examined frame
@@ -59,10 +60,15 @@ H_blurry2sharp = generate_homographies(quant_Rs_inverse, K);
 % Draw the sharp pixels' paths during camera shake on the blurry frame
 I_blurry_paths = draw_kernel_on_frame(I_blurry, H_blurry2sharp);
 
+% Run Richardson-Lucy deconvolution
+% tic;
+i_rl = deconvlucy_rotational(I_blurry, [height, width], weights, quant_thetas, K, K, 255, 3);
+% toc;
+imwrite(i_rl, strcat('results/',file_name,'/result',num2str(frame_number),'Image25Exposure',num2str(i),'offset3.png'));
 %% Visualize the results
 
 % Plot the resulting kernel
-figure;
+fk = figure;
 plot3(quant_thetas(1, :), quant_thetas(2, :), quant_thetas(3, :), 'ob',...
     'MarkerFaceColor', 'b', 'MarkerSize', 5, 'MarkerEdgeColor', 'k');
 axis tight
@@ -72,8 +78,12 @@ xlabel('\theta_x');
 ylabel('\theta_y');
 zlabel('\theta_z');
 title('Rotation samples of estimated kernel', 'FontSize', 14);
+saveas(fk, strcat('results/',file_name,'/result',num2str(frame_number),'Kernel',num2str(i),'offset3.fig'))
 
 % Plot the frame with the paths
-figure;
-imshow(I_blurry_paths);
-title('Pixel paths during camera rotation', 'FontSize', 14);
+% fp = figure;
+imwrite(I_blurry_paths, strcat('results/',file_name,'/result',num2str(frame_number),'ImagePaths25Exposure',num2str(i),'offset3.png'));
+% imshow(I_blurry_paths);
+% title('Pixel paths during camera rotation', 'FontSize', 14);
+toc;
+end

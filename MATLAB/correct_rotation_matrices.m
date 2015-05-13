@@ -13,7 +13,7 @@ function Rs_corrected = correct_rotation_matrices(Rs)
 
 % Define rotation matrix from Nexus coordinate frame to standard camera
 % coordinate frame
-R = diag([1, -1, -1]);
+R = [0,-1,0;-1,0,0;0,0,-1];
 Rt = R';
 
 Rs_corrected = zeros(size(Rs));
