@@ -39,3 +39,6 @@ Following 3 files are generated for each offset.
 - ImagePaths: This shows the blur kernel path for a random set of pixels superimposed on the initial image.
 - Kernel: Blur kernel visualization in a 3d grid (.fig file)
 - Image: The final image file.
+
+The offset can be identified by viewing the images and selecting ones that have the best result. More than 1 frame can
+be leveraged to correctly identify the offset.
