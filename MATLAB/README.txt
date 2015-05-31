@@ -34,11 +34,11 @@ can change the offsets to run for in line 3. Following parameters can be tuned i
 - line 18: frame number to be used.
 - line 28: pixel size, need to be changed if the device is not Nexus 5.
 Make sure to change the intermediate file name (line 11) in case you changed it in the earlier steps.
-Please create the folders 'results'. The results for different offsets will be stored in this folder.
+Please create the folder 'results'. The results for different offsets will be stored in this folder.
 Following 3 files are generated for each offset.
-- ImagePaths: This shows the blur kernel path for a random set of pixels superimposed on the initial image.
+- ImagePaths: This shows the blur kernel path for a grid of pixels superimposed on the initial image.
 - Kernel: Blur kernel visualization in a 3d grid (.fig file)
-- Image: The final image file.
+- Image: The final deblurred image file.
 
 The offset can be identified by viewing the images and selecting ones that have the best result. More than 1 frame can
 be leveraged to correctly identify the offset.
