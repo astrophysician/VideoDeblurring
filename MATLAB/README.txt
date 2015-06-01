@@ -3,6 +3,8 @@ Please follow the Readme from parent folder to get the video and sensor files.
 =========================================
 Initial Set up
 =========================================
+First of all, go to the folder 'deblur_nonuniform_v0.2.1\deblur_nonuniform_v0.2.1\code' and compile the mex files
+using 'mex_all' script. Add this folder ('deblur_nonuniform_v0.2.1\deblur_nonuniform_v0.2.1\code') to the path as well.
 Run the 'Input_smartphone_video_data.m' script to create some intermediate .mat files.
 The variables in line 8 and 14 should be changed to the appropriate values corresponding to the video
 and sensor file names. This script will generate video frame and sensor correspondence data for different

@@ -1,6 +1,6 @@
 %% Visualize blurring process for a single frame
 
-for i = 80:-1:70
+for i = 55
 close all;
 clearvars -except i;
 
@@ -8,7 +8,7 @@ clearvars -except i;
 tic;
 file_name = 'VID_20150510_204827';
 
-load(strcat('data/', file_name, strcat('_registeredExposureTime25',num2str(i)), '.mat'));
+load(strcat('data/', file_name, strcat('_registeredExposureTime30',num2str(i)), '.mat'));
 % load(strcat('data/', file_name, '_registered.mat'));
 
 vid = VideoReader(strcat('data/', file_name, '.mp4'));
@@ -62,9 +62,9 @@ I_blurry_paths = draw_kernel_on_frame(I_blurry, H_blurry2sharp);
 
 % Run Richardson-Lucy deconvolution
 % tic;
-i_rl = deconvlucy_rotational(I_blurry, [height, width], weights, quant_thetas, K, K, 255, 3);
+i_rl = deconvlucy_rotational(I_blurry, [height, width], weights, quant_thetas, K, K, 255, 5);
 % toc;
-imwrite(i_rl, strcat('results/',file_name,'/result',num2str(frame_number),'Image25Exposure',num2str(i),'offset3.png'));
+imwrite(i_rl, strcat('results/',file_name,'/result',num2str(frame_number),'Image40Exposure',num2str(i),'offset5.png'));
 %% Visualize the results
 
 % Plot the resulting kernel
@@ -73,16 +73,16 @@ plot3(quant_thetas(1, :), quant_thetas(2, :), quant_thetas(3, :), 'ob',...
     'MarkerFaceColor', 'b', 'MarkerSize', 5, 'MarkerEdgeColor', 'k');
 axis tight
 grid on
-axis equal
+% axis equal
 xlabel('\theta_x');
 ylabel('\theta_y');
 zlabel('\theta_z');
 title('Rotation samples of estimated kernel', 'FontSize', 14);
-saveas(fk, strcat('results/',file_name,'/result',num2str(frame_number),'Kernel',num2str(i),'offset3.fig'))
+saveas(fk, strcat('results/',file_name,'/result',num2str(frame_number),'Kernel',num2str(i),'offset5.fig'))
 
 % Plot the frame with the paths
 % fp = figure;
-imwrite(I_blurry_paths, strcat('results/',file_name,'/result',num2str(frame_number),'ImagePaths25Exposure',num2str(i),'offset3.png'));
+imwrite(I_blurry_paths, strcat('results/',file_name,'/result',num2str(frame_number),'ImagePaths30Exposure',num2str(i),'offset5.png'));
 % imshow(I_blurry_paths);
 % title('Pixel paths during camera rotation', 'FontSize', 14);
 toc;

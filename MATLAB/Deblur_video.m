@@ -1,11 +1,11 @@
 %% Deblur entire video and produce deblurred output
-
+tic;
 close all;
 clear all;
 
 %% Load registered sensor data and video
 
-file_name = 'VID_20150510_204827';
+file_name = 'VID_20150510_210632';
 
 % Load video
 vid = VideoReader(strcat('data/', file_name, '.mp4'));
@@ -15,7 +15,7 @@ writerObj = VideoWriter(strcat('data/', file_name, '_Sharp.avi'));
 num_frames = get(vid, 'NumberOfFrames');
 
 % Offset of recorded system timestamp from true start of video (in samples)
-i = 96;
+i = 83;
 
 % Load sensor data
 load(strcat('data/', file_name, strcat('_registeredExposureTime40',num2str(i)), '.mat'));
@@ -84,4 +84,5 @@ for frame_number = 1:num_frames
     writeVideo(writerObj,sharp_frame);
 end
 close(writerObj);
+toc;
 

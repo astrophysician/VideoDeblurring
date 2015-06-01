@@ -1,7 +1,7 @@
-C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\classes\debug
-C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-3094e9db37f4e765c9a527496a6e3750ac08deb7.jar
-C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-07490a8440ad731b90b2e44882c5bc07a974b279.jar
-C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\classes-a1ad35595381ed42096529995d800995486bb17f.jar
-C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\classes-ccdbb319456e12b918b10424fa20597b99c61e8e.jar
-C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-9130ce421bdef34a5f198f6075ae142946150334.jar
-C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\classes-ecb4636c04c2700382b891c3de700a281aa0ba3a.jar
+C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\classes\debug
+C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-194aa1abc9af676569e2304fdd1b664df335b653.jar
+C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-d40b1251f18235bd96081c68876137d20254a1de.jar
+C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\pre-dexed\debug\classes-dde105d70b7a512bd8028445a668179219a27b3d.jar
+C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\pre-dexed\debug\classes-8794407b9d4eb29d44ec747850f97e01c3aa7094.jar
+C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-3b0ff6d8ce749b64e74c8082b1f96d96e31e9e02.jar
+C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\pre-dexed\debug\classes-a6eee8bb21f576f7628149de65f03e36264c94cd.jar

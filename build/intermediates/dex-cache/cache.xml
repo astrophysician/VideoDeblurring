@@ -2,46 +2,46 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\libs\internal_impl-21.0.2.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f">
-        <dex dex="C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-9130ce421bdef34a5f198f6075ae142946150334.jar" />
-    </item>
-    <item
-        jar="C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\exploded-aar\com.android.support\cardview-v7\21.0.2\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="b017100da14f9c158c9f5f2f508333c224b24a7c">
-        <dex dex="C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\classes-ccdbb319456e12b918b10424fa20597b99c61e8e.jar" />
-    </item>
-    <item
-        jar="C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="d1bf02de1c56d942e7a9d093b8610ba1ef4128e3">
-        <dex dex="C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\classes-ecb4636c04c2700382b891c3de700a281aa0ba3a.jar" />
-    </item>
-    <item
-        jar="C:\Users\chris\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.2\support-annotations-21.0.2.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
-        <dex dex="C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-07490a8440ad731b90b2e44882c5bc07a974b279.jar" />
-    </item>
-    <item
-        jar="C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\exploded-aar\com.android.support\support-v13\21.0.2\libs\internal_impl-21.0.2.jar"
+        jar="C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\exploded-aar\com.android.support\support-v13\21.0.2\libs\internal_impl-21.0.2.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="9346da9fb778af9e451211bbc3541daced174ba7">
-        <dex dex="C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-3094e9db37f4e765c9a527496a6e3750ac08deb7.jar" />
+        <dex dex="C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-194aa1abc9af676569e2304fdd1b664df335b653.jar" />
     </item>
     <item
-        jar="C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\exploded-aar\com.android.support\support-v13\21.0.2\classes.jar"
+        jar="C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\exploded-aar\com.android.support\cardview-v7\21.0.2\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="b017100da14f9c158c9f5f2f508333c224b24a7c">
+        <dex dex="C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\pre-dexed\debug\classes-8794407b9d4eb29d44ec747850f97e01c3aa7094.jar" />
+    </item>
+    <item
+        jar="C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="d1bf02de1c56d942e7a9d093b8610ba1ef4128e3">
+        <dex dex="C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\pre-dexed\debug\classes-a6eee8bb21f576f7628149de65f03e36264c94cd.jar" />
+    </item>
+    <item
+        jar="C:\Users\himanshujain\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.2\support-annotations-21.0.2.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
+        <dex dex="C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-d40b1251f18235bd96081c68876137d20254a1de.jar" />
+    </item>
+    <item
+        jar="C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\libs\internal_impl-21.0.2.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f">
+        <dex dex="C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-3b0ff6d8ce749b64e74c8082b1f96d96e31e9e02.jar" />
+    </item>
+    <item
+        jar="C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\exploded-aar\com.android.support\support-v13\21.0.2\classes.jar"
         jumboMode="false"
         revision="21.1.1"
         sha1="61965ae058916e6a57950dd61b0164dc866af19a">
-        <dex dex="C:\Users\chris\AndroidStudioProjects\MediaRecorder\Application\build\intermediates\pre-dexed\debug\classes-a1ad35595381ed42096529995d800995486bb17f.jar" />
+        <dex dex="C:\Users\himanshujain\Documents\GitHub\MediaRecorder\Application\build\intermediates\pre-dexed\debug\classes-dde105d70b7a512bd8028445a668179219a27b3d.jar" />
     </item>
 
 </items>

@@ -22,4 +22,4 @@
             android:onClick="onCaptureClick"
             android:text="@string/btnCapture"/>
 </FrameLayout>
-<!-- From: file:/C:/Users/chris/AndroidStudioProjects/MediaRecorder/Application/src/main/res/layout/sample_main.xml -->
+<!-- From: file:/C:/Users/himanshujain/Documents/GitHub/MediaRecorder/Application/src/main/res/layout/sample_main.xml -->

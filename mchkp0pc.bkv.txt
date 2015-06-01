@@ -1,0 +1,66 @@
+﻿Minor changes to make the app work
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   Application/src/main/java/com/example/android/mediarecorder/MainActivity.java
+#
+# Changes not staged for commit:
+#	modified:   .gradle/2.2.1/taskArtifacts/cache.properties.lock
+#	modified:   .gradle/2.2.1/taskArtifacts/fileHashes.bin
+#	modified:   .gradle/2.2.1/taskArtifacts/fileSnapshots.bin
+#	modified:   .gradle/2.2.1/taskArtifacts/outputFileStates.bin
+#	modified:   .gradle/2.2.1/taskArtifacts/taskArtifacts.bin
+#	modified:   .idea/misc.xml
+#	modified:   .idea/workspace.xml
+#	modified:   Application/Application.iml
+#	modified:   Application/build.gradle
+#	modified:   Application/build/generated/source/buildConfig/debug/com/example/android/mediarecorder/BuildConfig.java
+#	modified:   Application/build/generated/source/buildConfig/test/debug/com/example/android/mediarecorder/test/BuildConfig.java
+#	modified:   Application/build/generated/source/r/debug/android/support/v7/cardview/R.java
+#	modified:   Application/build/intermediates/classes/debug/com/example/android/common/media/CameraHelper.class
+#	modified:   Application/build/intermediates/classes/debug/com/example/android/common/media/MediaCodecWrapper$1.class
+#	modified:   Application/build/intermediates/classes/debug/com/example/android/common/media/MediaCodecWrapper$WriteException.class
+#	modified:   Application/build/intermediates/classes/debug/com/example/android/common/media/MediaCodecWrapper.class
+#	modified:   Application/build/intermediates/classes/debug/com/example/android/mediarecorder/MainActivity$MediaPrepareTask.class
+#	modified:   Application/build/intermediates/classes/debug/com/example/android/mediarecorder/MainActivity.class
+#	modified:   Application/build/intermediates/dex/debug/classes.dex
+#	modified:   Application/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.2/AndroidManifest.xml
+#	modified:   Application/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.2/R.txt
+#	modified:   Application/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.2/res/values/values.xml
+#	modified:   Application/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.2/AndroidManifest.xml
+#	modified:   Application/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.2/AndroidManifest.xml
+#	modified:   Application/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.2/aidl/android/support/v4/app/INotificationSideChannel.aidl
+#	modified:   Application/build/intermediates/incremental/mergeAssets/debug/merger.xml
+#	modified:   Application/build/intermediates/incremental/mergeAssets/test/debug/merger.xml
+#	modified:   Application/build/intermediates/incremental/mergeResources/debug/merger.xml
+#	modified:   Application/build/intermediates/incremental/mergeResources/test/debug/merger.xml
+#	modified:   Application/build/intermediates/manifests/full/debug/AndroidManifest.xml
+#	modified:   Application/build/intermediates/manifests/test/debug/AndroidManifest.xml
+#	deleted:    Application/build/intermediates/pre-dexed/debug/classes-a1ad35595381ed42096529995d800995486bb17f.jar
+#	deleted:    Application/build/intermediates/pre-dexed/debug/classes-ccdbb319456e12b918b10424fa20597b99c61e8e.jar
+#	deleted:    Application/build/intermediates/pre-dexed/debug/classes-ecb4636c04c2700382b891c3de700a281aa0ba3a.jar
+#	deleted:    Application/build/intermediates/pre-dexed/debug/internal_impl-21.0.2-3094e9db37f4e765c9a527496a6e3750ac08deb7.jar
+#	deleted:    Application/build/intermediates/pre-dexed/debug/internal_impl-21.0.2-9130ce421bdef34a5f198f6075ae142946150334.jar
+#	deleted:    Application/build/intermediates/pre-dexed/debug/support-annotations-21.0.2-07490a8440ad731b90b2e44882c5bc07a974b279.jar
+#	modified:   Application/build/intermediates/res/debug/layout/activity_main.xml
+#	modified:   Application/build/intermediates/res/debug/layout/sample_main.xml
+#	modified:   Application/build/intermediates/res/debug/values-sw600dp-v13/values.xml
+#	modified:   Application/build/intermediates/res/debug/values-sw720dp-land-v13/values.xml
+#	modified:   Application/build/intermediates/res/debug/values-v11/values.xml
+#	modified:   Application/build/intermediates/res/debug/values-v21/values.xml
+#	modified:   Application/build/intermediates/res/debug/values/values.xml
+#	modified:   Application/build/intermediates/res/resources-debug-test.ap_
+#	modified:   Application/build/intermediates/res/resources-debug.ap_
+#	modified:   Application/build/intermediates/tmp/dex/debug/inputList.txt
+#	modified:   Application/build/outputs/apk/Application-debug-unaligned.apk
+#	modified:   Application/build/outputs/apk/Application-debug.apk
+#	modified:   Application/build/outputs/apk/manifest-merger-debug-report.txt
+#	modified:   MediaRecorder.iml
+#	modified:   build/intermediates/dex-cache/cache.xml
+#	modified:   build/intermediates/model_data.bin
+#	modified:   local.properties
+#
+
