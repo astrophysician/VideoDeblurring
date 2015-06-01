@@ -1,82 +1,23 @@
-<<<<<<< HEAD
-Android MediaRecorder Sample
-===================================
+The apk file is located at ../Application/Application-release.apk
 
-This sample uses the camera/camcorder as the A/V source for the MediaRecorder API.
-A TextureView is used as the camera preview which limits the code to API 14+. This
-can be easily replaced with a SurfaceView to run on older devices.
+This file gives description of the android app part of the code. The readme file for Matlab part is inside the folder Matlab.
 
-Introduction
-------------
+Description:
+This app records Rotation Vector Sensor data while recording a video. The code is based on the MediaRecorder
+sample available in the official Android code samples. This code has been tested and verified to run on Nexus 5 devices.
+This should run smoothly on other Nexus devices as well but has not been tested on them. The app does not run on most of
+the Galaxy series devices (we have tested it on Galaxy S2 and Galaxy Note 3 and it did not work). The video is recorded
+with fixed focal length.
 
-This sample shows how to use the [MediaRecorder][1] API.
-It uses the [Camera][2] as input source and displays a preview on a [TextureView][3]
-The sample features a button to capture the input and stop capturing afterwards.
+File Details:
+Both video and the sensor data files are stored at the default picture storage folder (usually 'Pictures' folder).
+The video file is in .mp4 format encoded using the default MPEG encoder for Android.
 
-It demonstrates how to correctly gain control and release the camera.
-The sample also shows how to save the captured audio and video to persistant storage
-and basic error handling.
+The sensor data file is a text file with the following data format:
+1st line records the device time stamp for approximate start time of video. The time stamp is recorded right after
+the control returns from MediaRecorder.start() method call.
+2nd line records the focal length of the camera sensor.
+Rest of the lines contain the system time stamp, event time stamp and Rotation Vector Sensor readings respectively.
+The Rotation Vector Sensor gives the 3X3 rotation matrix. The readings are listed in the row major order.
 
-
-[1]: https://developer.android.com/reference/android/media/MediaRecorder.html
-[2]: https://developer.android.com/reference/android/graphics/Camera.html
-[3]: https://developer.android.com/reference/android/view/TextureView.html
-
-Pre-requisites
---------------
-
-- Android SDK v21
-- Android Build Tools v21.1.1
-- Android Support Repository
-
-Screenshots
--------------
-
-<img src="screenshots/screenshot1.png" height="400" alt="Screenshot"/> <img src="screenshots/screenshot2.png" height="400" alt="Screenshot"/> 
-
-Getting Started
----------------
-
-This sample uses the Gradle build system. To build this project, use the
-"gradlew build" command or use "Import Project" in Android Studio.
-
-Support
--------
-
-- Google+ Community: https://plus.google.com/communities/105153134372062985968
-- Stack Overflow: http://stackoverflow.com/questions/tagged/android
-
-If you've found an error in this sample, please file an issue:
-https://github.com/googlesamples/android-MediaRecorder
-
-Patches are encouraged, and may be submitted by forking this project and
-submitting a pull request through GitHub. Please see CONTRIBUTING.md for more details.
-
-License
--------
-
-Copyright 2014 The Android Open Source Project, Inc.
-
-Licensed to the Apache Software Foundation (ASF) under one or more contributor
-license agreements.  See the NOTICE file distributed with this work for
-additional information regarding copyright ownership.  The ASF licenses this
-file to you under the Apache License, Version 2.0 (the "License"); you may not
-use this file except in compliance with the License.  You may obtain a copy of
-the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
-License for the specific language governing permissions and limitations under
-the License.
-=======
-# MediaRecorder
-
-This project implements the 1st work package of the "Image Deblurring using 3D Camera Rotation" project in the 3D Photography
-course (Spring Semester 2015) of the MSc in Computer Science at ETH Zurich.
-
-The goal is to retrieve synchronized video and sensory data from an Android smartphone, to use it for deblurring the original
-video by dealing with the 3D rotation of the camera.
->>>>>>> origin/master
+These files should be copied to a PC location and used with the Matlab code for de-blurring.
